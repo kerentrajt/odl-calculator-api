@@ -14,15 +14,14 @@ and is available at http://www.eclipse.org/legal/epl-v10.html INTERNAL
     <relativePath/>
   </parent>
 
-  <groupId>org.opendaylight.helloworld</groupId>
-  <artifactId>odltests</artifactId>
+  <groupId>org.opendaylight.calculator</groupId>
+  <artifactId>odl-calculator</artifactId>
   <version>0.3.4-SNAPSHOT</version>
-  <name>odltests</name>
+  <name>odl-calculator-api</name>
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
   <modules>
-    <module>odltests-api</module>
-    <module>odltests-impl</module>
+    <module>odl-calculator-api</module>
   </modules>
   <!-- DO NOT install or deploy the repo root pom as it's only needed to initiate a build -->
   <build>

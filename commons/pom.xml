@@ -16,7 +16,7 @@ and is available at http://www.eclipse.org/legal/epl-v10.html INTERNAL
     <relativePath/>
   </parent>
 
-  <groupId>org.opendaylight.helloworld</groupId>
+  <groupId>org.opendaylight.calculator</groupId>
   <artifactId>commons</artifactId>
   <version>0.3.4-SNAPSHOT</version>
   <name>${project.artifactId}</name>

@@ -1,6 +1,6 @@
-module odl-calculator-api {
+module odl-calculator-operational-api {
     yang-version 1;
-    namespace "urn:opendaylight:params:xml:ns:yang:odl-calculator-api:api";
+    namespace "urn:opendaylight:params:xml:ns:yang:odl-calculator-operational-api:api";
     prefix "odl-calculator-api";
 
     revision "2017-05-07" {
@@ -8,15 +8,16 @@ module odl-calculator-api {
             "Initial revision for Odl Test Api";
     }
 
-    container odl-calculator-api {
+    container odl-calculator-openrational-api {
         config true;
         description
             "api for odl test";
 
-        leaf input {
+        leaf calculator-output{
             type string;
             description
                "The name of the interface.";
+    
         }
 
     }

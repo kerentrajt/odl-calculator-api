@@ -18,7 +18,7 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
     <relativePath/>
   </parent>
 
-  <groupId>org.opendaylight.helloworld</groupId>
+  <groupId>org.opendaylight.calculator</groupId>
   <artifactId>it-parent</artifactId>
   <version>0.3.4-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -37,8 +37,8 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:ssh://git.opendaylight.org:29418/helloworld.git</connection>
-    <developerConnection>scm:git:ssh://git.opendaylight.org:29418/helloworld.git</developerConnection>
+    <connection>scm:git:ssh://git.opendaylight.org:29418/calculator.git</connection>
+    <developerConnection>scm:git:ssh://git.opendaylight.org:29418/calculator.git</developerConnection>
     <tag>HEAD</tag>
     <url>https://wiki.opendaylight.org/view/OVSDB_Integration:Main</url>
   </scm>
