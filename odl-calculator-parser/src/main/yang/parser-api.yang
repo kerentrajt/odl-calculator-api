@@ -1,0 +1,19 @@
+module parser-southbound {
+    namespace "urn:opendaylight:calculator:parser-api";
+    prefix "parser";
+   
+    revision "2017-05-07" {
+        description "Parser for calculator";
+    }
+
+    container parser-api {
+        config true;
+        description "contain list of integers and operators";
+	list query {
+		leaf object {
+			type string;
+			description "Can be either an integer, plus or minux";
+		}
+	}
+    }
+}
