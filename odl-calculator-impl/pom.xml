@@ -18,6 +18,17 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <artifactId>odl-calculator-impl</artifactId>
   <packaging>bundle</packaging>
   <dependencies>
+      <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>odl-calculator-api</artifactId>
+      <version>${vpnservices.version}</version>
+    </dependency>
+      <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>odl-calculator-parser</artifactId>
+      <version>${vpnservices.version}</version>
+    </dependency>
+  
     <dependency>
       <groupId>org.opendaylight.mdsal</groupId>
       <artifactId>yang-binding</artifactId>
