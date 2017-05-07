@@ -8,46 +8,53 @@
 
 package org.opendaylight.calculator.listen;
 
+import org.opendaylight.controller.md.sal.binding.api.DataBroker;
+import org.opendaylight.controller.md.sal.common.api.data.LogicalDatastoreType;
 import org.opendaylight.genius.datastoreutils.AsyncDataTreeChangeListenerBase;
-import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.odl.calculator.api.api.rev170507.OdlCalculatorApi;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.odl.calculator.operational.api.api.rev170507.OdlCalculatorOpenrationalApi;
 import org.opendaylight.yangtools.yang.binding.InstanceIdentifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class CalculatorOutputListener extends AsyncDataTreeChangeListenerBase<OdlCalculatorApi, CalculatorOutputListener>
+public class CalculatorOutputListener extends AsyncDataTreeChangeListenerBase<OdlCalculatorOpenrationalApi, CalculatorOutputListener>
 implements AutoCloseable {
 
+	private static final Logger LOG = LoggerFactory.getLogger(CalculatorOutputListener.class);
+	private DataBroker databroker;
+
 	public CalculatorOutputListener() {
-		super(OdlCalculatorApi.class,CalculatorOutputListener.class);
+		super(OdlCalculatorOpenrationalApi.class,CalculatorOutputListener.class);
 	}
 
 	@Override
-	protected InstanceIdentifier<OdlCalculatorApi> getWildCardPath() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected void remove(InstanceIdentifier<OdlCalculatorApi> key, OdlCalculatorApi dataObjectModification) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void update(InstanceIdentifier<OdlCalculatorApi> key, OdlCalculatorApi dataObjectModificationBefore,
-			OdlCalculatorApi dataObjectModificationAfter) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void add(InstanceIdentifier<OdlCalculatorApi> key, OdlCalculatorApi dataObjectModification) {
-		// TODO Auto-generated method stub
-		
+	protected void add(InstanceIdentifier<OdlCalculatorOpenrationalApi> key,
+			OdlCalculatorOpenrationalApi dataObjectModification) {
+		LOG.info("the calculation result is - {}",dataObjectModification.getCalculatorOutput() );
 	}
 
 	@Override
 	protected CalculatorOutputListener getDataTreeChangeListener() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
+	}
+
+	@Override
+	protected InstanceIdentifier<OdlCalculatorOpenrationalApi> getWildCardPath() {
+		return InstanceIdentifier.builder(OdlCalculatorOpenrationalApi.class).build();
+	}
+
+	@Override
+	protected void remove(InstanceIdentifier<OdlCalculatorOpenrationalApi> key,
+			OdlCalculatorOpenrationalApi dataObjectModification) {		
+	}
+	public void start() {
+		LOG.info("{} started.", CalculatorOutputListener.class.getSimpleName());
+		registerListener(LogicalDatastoreType.CONFIGURATION, databroker);
+	}
+
+	@Override
+	protected void update(InstanceIdentifier<OdlCalculatorOpenrationalApi> key,
+			OdlCalculatorOpenrationalApi dataObjectModificationBefore,
+			OdlCalculatorOpenrationalApi dataObjectModificationAfter){		
 	}
 	
 }
