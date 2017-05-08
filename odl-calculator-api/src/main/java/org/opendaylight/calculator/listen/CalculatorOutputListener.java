@@ -16,20 +16,22 @@ import org.opendaylight.yangtools.yang.binding.InstanceIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CalculatorOutputListener extends AsyncDataTreeChangeListenerBase<OdlCalculatorOpenrationalApi, CalculatorOutputListener>
-implements AutoCloseable {
+public class CalculatorOutputListener
+		extends AsyncDataTreeChangeListenerBase<OdlCalculatorOpenrationalApi, CalculatorOutputListener>
+		implements AutoCloseable {
 
 	private static final Logger LOG = LoggerFactory.getLogger(CalculatorOutputListener.class);
 	private DataBroker databroker;
-
-	public CalculatorOutputListener() {
-		super(OdlCalculatorOpenrationalApi.class,CalculatorOutputListener.class);
+	
+	public CalculatorOutputListener(DataBroker databroker) {
+		super(OdlCalculatorOpenrationalApi.class, CalculatorOutputListener.class);
+		this.databroker = databroker;
 	}
 
 	@Override
 	protected void add(InstanceIdentifier<OdlCalculatorOpenrationalApi> key,
 			OdlCalculatorOpenrationalApi dataObjectModification) {
-		LOG.info("the calculation result is - {}",dataObjectModification.getCalculatorOutput() );
+		LOG.info("the calculation result is - {}", dataObjectModification.getCalculatorOutput());
 	}
 
 	@Override
@@ -44,8 +46,9 @@ implements AutoCloseable {
 
 	@Override
 	protected void remove(InstanceIdentifier<OdlCalculatorOpenrationalApi> key,
-			OdlCalculatorOpenrationalApi dataObjectModification) {		
+			OdlCalculatorOpenrationalApi dataObjectModification) {
 	}
+
 	public void start() {
 		LOG.info("{} started.", CalculatorOutputListener.class.getSimpleName());
 		registerListener(LogicalDatastoreType.CONFIGURATION, databroker);
@@ -54,7 +57,7 @@ implements AutoCloseable {
 	@Override
 	protected void update(InstanceIdentifier<OdlCalculatorOpenrationalApi> key,
 			OdlCalculatorOpenrationalApi dataObjectModificationBefore,
-			OdlCalculatorOpenrationalApi dataObjectModificationAfter){		
+			OdlCalculatorOpenrationalApi dataObjectModificationAfter) {
 	}
-	
+
 }

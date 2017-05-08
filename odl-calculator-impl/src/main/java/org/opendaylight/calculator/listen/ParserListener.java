@@ -22,6 +22,10 @@ import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.odl.calc
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.odl.calculator.operational.api.api.rev170507.OdlCalculatorOpenrationalApiBuilder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 import org.opendaylight.yangtools.yang.binding.InstanceIdentifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 
 public class ParserListener extends AsyncDataTreeChangeListenerBase<ParserApi, ParserListener>
 		implements AutoCloseable {
@@ -33,7 +37,10 @@ public class ParserListener extends AsyncDataTreeChangeListenerBase<ParserApi, P
 		this.dataBroker = dataBroker;
 	}
 
+	private static final Logger LOG = LoggerFactory.getLogger(ParserListener.class);
+
 	public void start() {
+		LOG.info("{} started.", ParserListener.class.getSimpleName());
 		registerListener(LogicalDatastoreType.CONFIGURATION, dataBroker);
 	}
 
@@ -78,13 +85,16 @@ public class ParserListener extends AsyncDataTreeChangeListenerBase<ParserApi, P
 
 	@Override
 	protected void update(InstanceIdentifier<ParserApi> key, ParserApi dataObjectModificationBefore,
+		
 			ParserApi dataObjectModificationAfter) {
+		LOG.info("{} Updated.", ParserListener.class.getSimpleName());
 		calculate(dataObjectModificationAfter);
 
 	}
 
 	@Override
 	protected void add(InstanceIdentifier<ParserApi> key, ParserApi dataObjectModification) {
+		LOG.info("{} Add.", ParserListener.class.getSimpleName());
 		calculate(dataObjectModification);
 	}
 

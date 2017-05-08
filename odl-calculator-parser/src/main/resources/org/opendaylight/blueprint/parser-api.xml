@@ -7,7 +7,7 @@
     interface="org.opendaylight.controller.md.sal.binding.api.DataBroker"
     odl:type="default" />
     
-  <bean id="CalculatorOutputListener" class="org.opendaylight.calculator.listen.CalculatorOutputListener"
+  <bean id="CalculatorInputListener" class="org.opendaylight.calculator.listen.CalculatorInputListener"
     init-method="start" destroy-method="close">
     <argument ref="dataBroker" />
   </bean>
